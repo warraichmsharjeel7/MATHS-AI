@@ -1,0 +1,546 @@
+/* =========================================================
+   PiQuest X — Futuristic Electric Blue Theme (Updated)
+   Matching Logo Aesthetic: Deep Dark Background, Electric Blue Neon Glows, 
+   Cyan Accents, Cyan-Blue Gradients & High Contrast Glassmorphism
+   ========================================================= */
+
+:root {
+    --bg: #030814;
+    --panel: rgba(8, 24, 52, 0.65);
+    --line: rgba(0, 180, 255, 0.25);
+    --text: #e1f5fe;
+    --mute: #7bb2d9;
+    --user: rgba(0, 140, 255, 0.22);
+    --accent: #00d2ff;
+    --accent-glow: rgba(0, 210, 255, 0.4);
+    --hover: rgba(0, 180, 255, 0.15);
+    color-scheme: dark;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+html,
+body {
+    height: 100%;
+    height: 100dvh;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    background-color: #020612;
+    background-image:
+        radial-gradient(1000px 600px at 50% -10%, rgba(0, 180, 255, 0.25), transparent 70%),
+        radial-gradient(800px 500px at 100% 40%, rgba(0, 100, 255, 0.18), transparent 60%),
+        radial-gradient(800px 500px at 0% 80%, rgba(0, 230, 255, 0.15), transparent 60%),
+        linear-gradient(180deg, #020612 0%, #051329 50%, #020817 100%);
+    background-attachment: fixed;
+    color: var(--text);
+    font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Background floating math symbols with neon electric blue tint */
+html::before,
+body::before,
+body::after {
+    position: fixed;
+    z-index: -1;
+    pointer-events: none;
+    font: 700 clamp(3rem, 12vw, 6rem) Georgia, serif;
+    color: rgba(0, 210, 255, 0.08);
+    text-shadow: 0 0 20px rgba(0, 210, 255, 0.2);
+    animation: dfloat 14s ease-in-out infinite;
+}
+
+html::before {
+    content: "π";
+    left: 6%;
+    top: 14%;
+}
+
+body::before {
+    content: "∑";
+    right: 8%;
+    top: 22%;
+    animation-delay: -5s;
+}
+
+body::after {
+    content: "∫";
+    left: 14%;
+    bottom: 10%;
+    animation-delay: -9s;
+}
+
+@keyframes dfloat {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-28px) rotate(12deg); }
+}
+
+button {
+    font: inherit;
+    color: inherit;
+    background: none;
+    border: 0;
+    cursor: pointer;
+    touch-action: manipulation;
+}
+
+/* Screen backgrounds */
+#landing, #auth, #dash, #profile, #daily {
+    background: transparent !important;
+}
+
+header, footer {
+    background: transparent;
+}
+
+.title, .splash h1, .wm {
+    color: #ffffff;
+    text-shadow: 0 0 12px rgba(0, 210, 255, 0.5);
+}
+
+.mark {
+    background: linear-gradient(135deg, #00d2ff, #0055ff);
+    box-shadow: 0 0 20px rgba(0, 210, 255, 0.6), 0 0 40px rgba(0, 110, 255, 0.3);
+    color: #ffffff;
+    border-radius: 20px;
+    width: 64px;
+    height: 64px;
+    display: grid;
+    place-items: center;
+    font: 600 2rem/1 Georgia, serif;
+}
+
+.mark.sm {
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    box-shadow: 0 0 12px rgba(0, 210, 255, 0.5);
+}
+
+/* Glassmorphism Cards & Panels */
+.card, .dstat, .dcard, .feat, .step, .nat, .d2 .nat, .d2 .topic, .topic, .know, .wbtn, .stat, .mxbtn,
+#landing .feat, #landing .nat, #landing .know, #landing .step, #landing .dcard, #landing .lend, .acard, .dqcard, .dtit {
+    background: rgba(6, 20, 45, 0.65) !important;
+    border: 1px solid rgba(0, 210, 255, 0.3) !important;
+    color: var(--text) !important;
+    box-shadow: 0 8px 32px rgba(0, 5, 20, 0.5), inset 0 0 15px rgba(0, 210, 255, 0.05) !important;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-radius: 22px !important;
+}
+
+.d2 .nat:hover, .d2 .topic:hover, .topic:hover, .feat:hover, .dstat:hover, .dcard:hover, .mxbtn:hover, .wbtn:hover, .nat:hover {
+    background: rgba(10, 32, 68, 0.8) !important;
+    border-color: rgba(0, 220, 255, 0.7) !important;
+    box-shadow: 0 12px 35px rgba(0, 180, 255, 0.25), 0 0 15px rgba(0, 210, 255, 0.2) !important;
+}
+
+.nat.on, .d2 .nat.on {
+    background: rgba(0, 180, 255, 0.22) !important;
+    border-color: #00d2ff !important;
+    box-shadow: 0 0 20px rgba(0, 210, 255, 0.3) !important;
+}
+
+.d2 .nat.on::after {
+    background: #00d2ff;
+    color: #020817;
+    box-shadow: 0 0 10px #00d2ff;
+}
+
+.dgbox {
+    background: rgba(2, 10, 28, 0.6) !important;
+    border: 1px solid rgba(0, 210, 255, 0.15);
+}
+
+.cap, .nat span, .feat span span, .step p, .know li, .mhint, .mlab, .mute {
+    color: var(--mute) !important;
+}
+
+.feat b, .nat b, .dstat b, .dcard h3, .rn b, .wbtn b, .mxbtn b, .pfi h1, #daily h1, #daily h2 {
+    color: #ffffff !important;
+    text-shadow: 0 0 8px rgba(0, 210, 255, 0.3);
+}
+
+.dwrap h2 {
+    color: #80d8ff;
+}
+
+.facts {
+    border-top-color: rgba(0, 210, 255, 0.2);
+    color: rgba(225, 245, 254, 0.85);
+}
+
+/* Primary CTA & Glowing Buttons */
+.cta, .send, .neu, #landing .lcta .cta, #landing .lend .cta, #landing .dbar .pill.dark, #auth .acard .cta {
+    background: linear-gradient(135deg, #00d2ff 0%, #0066ff 100%) !important;
+    color: #ffffff !important;
+    border: none !important;
+    box-shadow: 0 0 20px rgba(0, 210, 255, 0.4), 0 4px 15px rgba(0, 102, 255, 0.3) !important;
+    font-weight: 700;
+    transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.cta:hover:not(:disabled), .neu:hover, #landing .lcta .cta:hover, #landing .lend .cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 30px rgba(0, 220, 255, 0.7), 0 6px 20px rgba(0, 102, 255, 0.5) !important;
+    filter: brightness(1.1);
+}
+
+.ghost, .pill, #landing .lcta .ghost, #landing .dbar .pill:not(.dark) {
+    background: rgba(8, 28, 60, 0.6) !important;
+    color: #e1f5fe !important;
+    border: 1px solid rgba(0, 210, 255, 0.35) !important;
+    backdrop-filter: blur(10px);
+}
+
+.ghost:hover, .pill:hover {
+    background: rgba(0, 180, 255, 0.2) !important;
+    border-color: #00d2ff !important;
+    box-shadow: 0 0 15px rgba(0, 210, 255, 0.3) !important;
+}
+
+/* Icons styling */
+.ico, .wi {
+    background: rgba(0, 210, 255, 0.15) !important;
+    color: #00d2ff !important;
+    box-shadow: 0 0 10px rgba(0, 210, 255, 0.2);
+}
+
+.dstat:first-child .ico, .feat:nth-child(3) .ico {
+    background: rgba(0, 230, 255, 0.2) !important;
+    color: #80d8ff !important;
+}
+
+.feat:nth-child(4) .ico {
+    background: rgba(0, 140, 255, 0.2) !important;
+    color: #40c4ff !important;
+}
+
+.feat:nth-child(5) .ico {
+    background: rgba(0, 180, 255, 0.2) !important;
+    color: #00e5ff !important;
+}
+
+.feat:nth-child(6) .ico {
+    background: rgba(30, 136, 229, 0.2) !important;
+    color: #82b1ff !important;
+}
+
+.ok2 {
+    background: rgba(0, 210, 255, 0.2);
+    color: #00d2ff;
+}
+
+/* Dashboard Hero */
+.hero {
+    background: linear-gradient(135deg, rgba(0, 180, 255, 0.25), rgba(0, 70, 190, 0.15)) !important;
+    border: 1px solid rgba(0, 210, 255, 0.4) !important;
+    box-shadow: 0 0 35px rgba(0, 180, 255, 0.15), 0 16px 40px rgba(0, 0, 0, 0.4) !important;
+    border-radius: 28px !important;
+}
+
+.w2 {
+    stroke: #00d2ff;
+    stroke-opacity: 0.4;
+}
+
+.rt {
+    stroke: rgba(0, 210, 255, 0.15) !important;
+}
+
+/* Math Diagrams */
+.ax { stroke: rgba(0, 210, 255, 0.35); }
+.gr { stroke: rgba(0, 210, 255, 0.12); }
+.uc, .tri, .pic { fill: rgba(0, 210, 255, 0.12); }
+.sinc, .arcs { stroke: #00d2ff; filter: drop-shadow(0 0 6px rgba(0, 210, 255, 0.8)); }
+.lb { fill: rgba(225, 245, 254, 0.9); }
+.pit { fill: #00d2ff; text-shadow: 0 0 10px #00d2ff; }
+.pt { fill: #00d2ff; stroke: #020817; filter: drop-shadow(0 0 8px #00d2ff); }
+.pt2 { fill: #80d8ff; stroke: #020817; }
+.pn { fill: #ffffff; }
+
+/* Chat Bubbles and Input Bar */
+#chatview {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+#chat {
+    flex: 1;
+    overflow-y: auto;
+    padding: 8px 16px 24px;
+    scroll-behavior: smooth;
+}
+
+.msg.user .b {
+    background: var(--user) !important;
+    border: 1px solid rgba(0, 210, 255, 0.4) !important;
+    box-shadow: 0 4px 15px rgba(0, 180, 255, 0.15) !important;
+    color: #ffffff !important;
+    border-radius: var(--r);
+    padding: 10px 16px;
+    max-width: 85%;
+    white-space: pre-wrap;
+}
+
+.msg.ai .b {
+    padding: 2px 0;
+}
+
+.b code {
+    background: rgba(0, 180, 255, 0.15);
+    color: #80d8ff;
+    padding: 0.1em 0.4em;
+    border-radius: 6px;
+    font: 0.9em ui-monospace, Menlo, Consolas, monospace;
+}
+
+.b pre {
+    background: rgba(2, 12, 30, 0.8);
+    border: 1px solid rgba(0, 210, 255, 0.3);
+    border-radius: 14px;
+    padding: 12px 14px;
+    overflow-x: auto;
+    margin: 0 0 0.9em;
+}
+
+.b pre code {
+    background: none;
+    padding: 0;
+}
+
+.b a { color: #00d2ff; }
+
+.aiav {
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #00d2ff, #0055ff);
+    box-shadow: 0 0 12px rgba(0, 210, 255, 0.6);
+    color: #fff;
+    display: grid;
+    place-items: center;
+    font: 600 1.1rem Georgia, serif;
+}
+
+.aiav.live {
+    animation: glow 1.5s ease-in-out infinite;
+}
+
+@keyframes glow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(0, 210, 255, 0.6); transform: scale(1); }
+    50% { box-shadow: 0 0 0 10px rgba(0, 210, 255, 0); transform: scale(1.08); }
+}
+
+.acts button:hover {
+    background: rgba(0, 210, 255, 0.2);
+    color: #ffffff;
+}
+
+.shim {
+    background: linear-gradient(90deg, rgba(225, 245, 254, 0.5) 30%, #00d2ff 50%, rgba(225, 245, 254, 0.5) 70%);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.caret { background: #00d2ff; box-shadow: 0 0 8px #00d2ff; }
+.sy { color: #00d2ff; text-shadow: 0 0 8px #00d2ff; }
+
+.ib {
+    background: rgba(8, 28, 60, 0.6);
+    border: 1px solid rgba(0, 210, 255, 0.3);
+    color: var(--text);
+    border-radius: 50%;
+}
+
+.bar {
+    background: rgba(6, 22, 48, 0.75);
+    border: 1px solid rgba(0, 210, 255, 0.35);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 15px rgba(0, 210, 255, 0.1);
+    border-radius: 28px;
+    padding: 6px 6px 6px 8px;
+}
+
+.bar:focus-within {
+    border-color: #00d2ff;
+    box-shadow: 0 0 20px rgba(0, 210, 255, 0.3), 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+textarea {
+    flex: 1;
+    background: none;
+    border: 0;
+    color: var(--text);
+    font: inherit;
+    resize: none;
+    max-height: 160px;
+    padding: 10px 6px;
+    outline: none;
+}
+
+textarea::placeholder {
+    color: var(--mute);
+}
+
+.mic.on {
+    background: rgba(255, 50, 100, 0.25) !important;
+    color: #ff5252;
+}
+
+/* Sidebar Drawer and Sheets */
+.side {
+    background: linear-gradient(180deg, #051530 0%, #020a1a 100%);
+    border-right: 1px solid rgba(0, 210, 255, 0.3);
+    box-shadow: 10px 0 40px rgba(0, 0, 0, 0.6);
+    color: var(--text);
+}
+
+#drawer {
+    background: rgba(1, 6, 18, 0.7);
+}
+
+.side button.row:hover, .side button.row.cur, .hrow:hover, .hrow.cur {
+    background: rgba(0, 180, 255, 0.18);
+}
+
+.sheetwrap {
+    background: rgba(1, 6, 18, 0.75);
+}
+
+.sheet {
+    background: linear-gradient(180deg, #061b3d, #020917);
+    border: 1px solid rgba(0, 210, 255, 0.35);
+    border-bottom: 0;
+    color: var(--text);
+}
+
+.topic .sym, .mxbtn .sym {
+    color: #00d2ff;
+    text-shadow: 0 0 8px rgba(0, 210, 255, 0.4);
+}
+
+.tab {
+    background: rgba(0, 180, 255, 0.08);
+    border: 1px solid rgba(0, 210, 255, 0.2);
+}
+
+.tab.on {
+    background: linear-gradient(135deg, #00d2ff, #0055ff);
+    color: #ffffff;
+    box-shadow: 0 0 15px rgba(0, 210, 255, 0.4);
+}
+
+/* Form Inputs */
+.tsearch, .side input, .side select, .fld input, .mrow select, .mg input, #daily textarea, .acard input {
+    background: rgba(2, 12, 30, 0.7) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(0, 210, 255, 0.3) !important;
+    border-radius: 12px !important;
+}
+
+.fld input:disabled {
+    background: rgba(0, 180, 255, 0.05) !important;
+    color: var(--mute) !important;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none !important;
+    border-color: #00d2ff !important;
+    box-shadow: 0 0 12px rgba(0, 210, 255, 0.4) !important;
+}
+
+/* Segments, Badges, Titles */
+.seg button.on {
+    background: linear-gradient(135deg, #00d2ff, #0055ff) !important;
+    color: #ffffff !important;
+    box-shadow: 0 0 12px rgba(0, 210, 255, 0.4);
+}
+
+.link { color: #00d2ff; }
+.ok { color: #00e676; }
+
+.badge, .ttl {
+    background: rgba(0, 210, 255, 0.18) !important;
+    color: #80d8ff !important;
+    border: 1px solid rgba(0, 210, 255, 0.3) !important;
+}
+
+.ttl.m {
+    background: rgba(0, 140, 255, 0.25) !important;
+    color: #40c4ff !important;
+}
+
+.ttl.y {
+    background: rgba(0, 230, 255, 0.25) !important;
+    color: #80d8ff !important;
+}
+
+/* Welcome Emblem animation matching PiQuest X Logo */
+.welcome {
+    position: relative;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 18px 4px 28px;
+    overflow: hidden;
+}
+
+.emblem {
+    position: relative;
+    width: 96px;
+    height: 96px;
+    margin: 10px auto 34px;
+}
+
+.core {
+    position: absolute;
+    inset: 0;
+    border-radius: 28px;
+    background: linear-gradient(135deg, #00d2ff, #0055ff);
+    display: grid;
+    place-items: center;
+    box-shadow: 0 0 30px rgba(0, 210, 255, 0.7), 0 0 60px rgba(0, 80, 255, 0.4);
+    animation: float 4s ease-in-out infinite;
+}
+
+.core span {
+    font: 600 3rem/1 Georgia, serif;
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+.orbit i {
+    background: rgba(4, 18, 42, 0.9);
+    border: 1px solid rgba(0, 210, 255, 0.5);
+    color: #00d2ff;
+    box-shadow: 0 0 10px rgba(0, 210, 255, 0.3);
+}
+
+.wm .x {
+    background: linear-gradient(135deg, #00d2ff, #0055ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.dqlink {
+    background: linear-gradient(120deg, #0033aa, #0088ff 60%, #00d2ff) !important;
+    box-shadow: 0 10px 30px rgba(0, 136, 255, 0.4) !important;
+}
